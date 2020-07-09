@@ -26,7 +26,7 @@ const url = config.mongoUrl;
 const connect = mongoose.connect(url);
 var result;
 // var port = 3000
-
+const port = 3000;
 
 connect.then((db) => {
     db1 = ('conFusion')
@@ -104,5 +104,8 @@ app.use(function(err, req, res, next) {
 //   app.listen(port, () => 
 //     console.log(`Server listening on the port::${port}`
 // ));
+app.listen(port, () => {
+  console.log(`Server listening on the port::${port}`);
+});
 
 module.exports = app;
