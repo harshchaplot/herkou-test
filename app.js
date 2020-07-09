@@ -25,6 +25,8 @@ const stream = new EventEmitter()
 const url = config.mongoUrl;
 const connect = mongoose.connect(url);
 var result;
+var port = 3000
+
 
 connect.then((db) => {
     db1 = ('conFusion')
@@ -88,5 +90,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 module.exports = app;
