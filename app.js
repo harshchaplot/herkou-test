@@ -70,7 +70,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/*', function(req,res) {
     
-  res.sendFile(path.join(__dirname+'/dist/quizgenerator/index.html'));
+  res.sendFile(path.join(__dirname+'quizgenerator/dist/quizgenerator/index.html'));
 });
 
 // catch 404 and forward to error handler
