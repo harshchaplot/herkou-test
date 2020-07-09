@@ -25,7 +25,7 @@ const stream = new EventEmitter()
 const url = config.mongoUrl;
 const connect = mongoose.connect(url);
 var result;
-var port = 3000
+// var port = 3000
 
 
 connect.then((db) => {
@@ -70,11 +70,11 @@ app.use('/test', TestRouter);
 app.use('/staff', StaffRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/*', function(req,res) {
-  
-  res.sendFile(process.cwd()+"quizgenerator/dist/quizgenerator/index.html")
-  
-});
+// app.get('/*', function(req,res) {
+  // 
+  // res.sendFile(process.cwd()+"quizgenerator/dist/quizgenerator/index.html")
+  // 
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -101,8 +101,8 @@ app.use(function(err, req, res, next) {
 //   console.log( 'Node server is running on port ' + app.get( 'port' ));
 //   });
 
-  app.listen(port, () => 
-    console.log(`Server listening on the port::${port}`
-));
+//   app.listen(port, () => 
+//     console.log(`Server listening on the port::${port}`
+// ));
 
 module.exports = app;
