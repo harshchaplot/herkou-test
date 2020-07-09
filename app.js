@@ -101,8 +101,8 @@ app.use(function(err, req, res, next) {
 //   console.log( 'Node server is running on port ' + app.get( 'port' ));
 //   });
 
-  app.listen(port, () => {
-    console.log(`Server listening on the port::${port}`);
-});
+  app.listen(port, () => 
+    console.log(`Server listening on the port::${port}`
+));
 
 module.exports = app;
