@@ -71,8 +71,8 @@ app.use('/staff', StaffRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/*', function(req,res) {
-    
-  res.sendFile(path.join(__dirname+'quizgenerator/dist/quizgenerator/index.html'));
+  var filename = path.basename(path.dirname(filename))
+  res.sendFile(path.join(filename+'quizgenerator/dist/quizgenerator/index.html'));
 });
 
 // catch 404 and forward to error handler
