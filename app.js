@@ -52,6 +52,11 @@ var app = express();
 // });
 
 // view engine setup
+app.get('/*', (req,res) => {
+  // res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html")
+  res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
+});
+app.listen(process.env.PORT || 3000);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -95,10 +100,7 @@ app.use(function(err, req, res, next) {
 // app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 // app.set( 'port', ( process.env.PORT || 3000 ));
-app.get('/*', (req,res) => {
-  // res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html")
-  res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
-});
+
 // Start node server
 // app.listen( app.get( 'port' ), function() {
 //   console.log( 'Node server is running on port ' + app.get( 'port' ));
@@ -107,6 +109,6 @@ app.get('/*', (req,res) => {
 //   app.listen(port, () => 
 //     console.log(`Server listening on the port::${port}`
 // ));
-app.listen(process.env.PORT || 3000);
+
 
 module.exports = app;
