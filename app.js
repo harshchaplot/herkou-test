@@ -77,9 +77,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // });
 
 // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
+app.use(function(req, res, next) {
+  next(createError(404));
+});
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -95,9 +95,8 @@ app.use(function(err, req, res, next) {
 // app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 // app.set( 'port', ( process.env.PORT || 3000 ));
-app.get('/', (req,res) => {
-  // res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html")
-  res.sendFile(process.cwd()+"/quizgenerator/index.html");
+app.get('/*', (req,res) => {
+  res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html")
   // res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
 });
 // Start node server
