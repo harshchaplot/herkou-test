@@ -1,7 +1,7 @@
 module.exports = {
     'secretKey': '12345-67890-09876-54321',
-    'mongoUrl' : 'mongodb://localhost:27017/conFusion'
-    // mongodb+srv://admin:admin@mycluster-eatj8.mongodb.net/myDB?retryWrites=true&w=majority
+    'mongoUrl' : 'mongodb+srv://admin:admin@mycluster-eatj8.mongodb.net/myDB?retryWrites=true&w=majority'
+    
 }
 
 exports.shuffle =  function() {
