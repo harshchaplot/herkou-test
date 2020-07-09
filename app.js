@@ -72,6 +72,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/*', function(req,res) {
   var filename = path.basename(path.dirname(filename))
+  console.log(filname);
+  
   res.sendFile(path.join(filename+'quizgenerator/dist/quizgenerator/index.html'));
 });
 
