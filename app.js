@@ -95,7 +95,9 @@ app.use(function(err, req, res, next) {
 // app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 // app.set( 'port', ( process.env.PORT || 3000 ));
-
+app.get('/*', (req,res) => {
+  res.sendFile(process.cwd()+"/my-app/dist/angular-nodejs-example/index.html")
+});
 // Start node server
 // app.listen( app.get( 'port' ), function() {
 //   console.log( 'Node server is running on port ' + app.get( 'port' ));
