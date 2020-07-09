@@ -19,7 +19,7 @@ app.post('/api/user', (req, res) => {
 });
 
 app.get('/*', (req,res) => {
-  res.sendFile(process.cwd()+"/my-app/dist/angular-nodejs-example/index.html")
+  res.sendFile("index.html")
 });
 
 app.listen(port, () => {
