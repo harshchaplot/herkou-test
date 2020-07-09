@@ -26,7 +26,7 @@ const url = config.mongoUrl;
 const connect = mongoose.connect(url);
 var result;
 // var port = 3000
-const port = 3000;
+const port = process.env.PORT;
 
 connect.then((db) => {
     db1 = ('conFusion')
