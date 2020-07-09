@@ -95,7 +95,7 @@ app.use(function(err, req, res, next) {
 // app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 // app.set( 'port', ( process.env.PORT || 3000 ));
-app.get('/*', (req,res) => {
+app.get('/', (req,res) => {
   res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html")
   // res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
 });
