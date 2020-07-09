@@ -41,7 +41,7 @@ connect.then((db) => {
 // });
 
 var app = express();
-app.use(cors());
+// app.use(cors());
 // app.all('*', (req, res, next) => {
 //   if (req.secure) {
 //     return next();
