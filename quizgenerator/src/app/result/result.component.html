@@ -1,0 +1,107 @@
+<div class="main-content">
+    <div class="container-fluid">
+ 
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="header">
+                            <h4 class="title">Details Of Student</h4>
+                            <p class="title category">{{username}}</p>
+                        </div>
+                        <div >
+                          <div class="entry">
+                            <p class="card-text">Semester - {{semester}}</p>
+                              <hr>
+                            <p class="card-text">Branch - {{branch}}</p>
+                            <hr>
+                            <h5>Exams Attempted</h5>
+                            <table class="table table-hover">
+                                <tbody *ngFor="let i of subjects">
+                                    <tr *ngFor="let j of i | keyvalue">
+                                        <td>{{j.key}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- *ngIf="!questionWise" -->
+        <div >
+        <!-- <table *ngFor="let i of attempts" class="table table-hover table-striped">
+            <thead>
+                
+                <tr>
+                    <th><b>{{i['user']['username']}}</b></th>
+                    <th>
+                        {{i['subject']['date'] | date}}
+                    </th>
+                    <th>
+                        <p class="card-text">Marks
+                            <b>{{i['marks']}}/{{i['subject']['marks']}}</b></p>
+                    </th>
+                </tr>
+                
+                <tr>
+                    <th>Question Number</th>
+                    <th>Answer Attempted</th>
+                    <th>Check</th>
+                    <th>Correct Answer</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let a of i['attempt'] | keyvalue">
+                    <td>{{a.key}}</td>
+                    <td>{{a.value[0]}}</td>
+                    <td>{{a.value[1]}}</td>
+                    <td>{{a.value[2]}}</td>
+                
+                </tr>
+            </tbody>
+        </table> -->
+        </div>
+        <!-- *ngIf="questionWise" -->
+        <!-- <div >
+            <table *ngFor="let i of questionWise" class="table table-hover table-striped">
+                <thead>
+                
+                    <tr>
+                        <th><b>Question Number {{key}}</b></th>
+                        <th><b>{{i['user']['username']}}</b></th>
+                        <th>
+                            {{i['subject']['date'] | date}}
+                        </th>
+
+                    </tr>
+
+                    <tr>
+                        <th>Question Number</th> -->
+                        <!-- <th>Answer Attempted</th>
+                        <th>Check</th>
+                        <th>Correct Answer</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{i.key}}</td> -->
+                        <!-- <td>{{i.attempt[0]}}</td>
+                        <td>{{i.attempt[1]}}</td>
+                        <td>{{i.attempt[2]}}</td>
+                    
+                    </tr>
+                </tbody>
+            </table>
+                    <button mat-button (click)="goBack()">BACK</button>
+        
+        </div> -->
+        
+        <div *ngIf="!attempts">
+        <h4>No Attempt for this given Exam</h4>
+        </div>
+    </div>
+</div>

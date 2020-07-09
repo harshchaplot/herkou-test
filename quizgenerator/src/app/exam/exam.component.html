@@ -1,0 +1,166 @@
+
+<div *ngIf = "flag1">
+  <div class="totalquestion mat-elevation-z4 ">
+    <div *ngIf="quecount"><b>{{quecount}}</b></div>
+    <div *ngIf="!quecount"><b>NaN</b></div>
+  </div>
+
+  <div class="totalquestion1  ">Total Number of Questions</div>
+
+  <div class="questionnumber mat-elevation-z4 ">
+    <p *ngIf="questionnumber"><b>{{questionnumber}}</b></p>
+    <p *ngIf="!questionnumber"><b>NaN</b></p>
+  </div>
+
+  <div class="questionnumber1  ">Current Question Number</div>
+
+  <div class="attempted mat-elevation-z4 ">
+    <p><b>{{minute}}:{{timeLeft}}</b></p>  
+  </div>
+
+  <div class="attempted1">
+    Clock Timer
+  </div>
+
+  <div class="selectedAnswer">
+    <ng-container *ngIf="!selectedanswer && !last">Not Attempted</ng-container>
+    <ng-container *ngIf="selectedanswer">
+      Selected Answer is
+      <p><b>{{selectedanswer}}</b></p>
+    </ng-container>
+    <ng-container *ngIf="last">
+      Previously selectedOption Was :  <p><b>{{last}}</b></p>
+    </ng-container>
+  </div>
+
+
+  <div *ngIf="questionnumber>=1" class="panel" matRipple [matRippleColor]="mycolor" [matRippleRadius]="radius">
+    <div> 
+      <a *ngFor="let num of items; let i = index" class="disabled" (click)="test()" (click)="hasPrevNext(num[0],'l')">
+        <div class="currentbutton mat-elevation-z8" *ngIf="!answers[num[0]] && !questionflag[num[0]]" (click)="setClickedRow(i)" [class.select]="i==selectedItem" > <p>{{num[0]}}</p></div>
+        <div class="attemptedbutton mat-elevation-z8" *ngIf="answers[num[0]]" (click)="setClickedRow(i)"  [class.select]="answers[num[0]]"><p>{{num[0]}}</p></div>
+        <div class="flagquestions mat-elevation-z8" *ngIf="questionflag[num[0]] && !answers[num[0]]" (click)="setClickedRow(i)" [class.select]="questionflag[num[0]]"><p>{{num[0]}}</p></div>
+      </a>
+      <br>
+
+      <div class="button1 " *ngIf="!questionflag[questionnumber]"><abbr title="Mark Question for Review"><button mat-button class="mat-elevation-z4" [disabled]="answers[questionnumber]" (click)="flagquestion()" > <i class="fa fa-flag-o fa-lg" aria-hidden="true"></i></button></abbr></div>
+      <div class="button1 " *ngIf="questionflag[questionnumber]"><abbr title="Remove Flag from Question"><button mat-button  class="mat-elevation-z4"  (click)="removeflag()"> <i class="fa fa-flag fa-lg" aria-hidden="true"></i></button></abbr></div>
+      <div class="button1 " ><abbr title="Remove Attempt and Flag Question"><button mat-button class="mat-elevation-z4" [disabled]="!answers[questionnumber]" (click)="flagandremoveattempt()" > <i class="fa fa-eraser fa-lg" aria-hidden="true"></i></button></abbr></div>
+      <div class="button1"><button type="text" (click)="confirm()" pButton icon="pi pi-check" label="Complete Exam"></button></div>
+    </div>
+  </div>
+
+  <div class="outercoverquestion " *ngIf ="question">
+    
+    <div class="question">
+  	  <h5>
+  	    Question:
+  	  </h5> 
+  	    {{question.question}} 
+    </div>
+
+  <mat-radio-group class="example-radio-group " [(ngModel)]="selectedanswer" [disabled]="questionflag[questionnumber]">
+      <label  *ngIf ="question"><h5>Pick your answer</h5></label>
+      <div class="example-radio-button" *ngFor="let season of seasons; last as isLast">
+        <!-- <mat-radio-button [value]="season" (change)="savetemp(season)" [disabled]="answers[questionnumber]" [checked]="season==last" [class.checked]="season==last"> -->
+        <mat-radio-button [value]="season" (change)="savetemp(season)" [disabled]="testing[questionnumber]" [checked]="season==last" [class.checked]="season==last">
+        </mat-radio-button>
+        {{season}}
+      </div>
+  </mat-radio-group>
+  <button class="prevbutton " *ngIf="questionnumber>=1" mat-button [disabled]="questionnumber==1" [disabled]="testing[prev]" (click)="test()" (click)="hasPrevNext(prev,'p')" (click)="setClickedRow(questionnumber-1)" [class.select]="questionnumber-1 == selectedItem">Previous</button>
+  <button class="nextbutton " *ngIf="questionnumber>=1" mat-button [disabled]="questionnumber==quecount" [disabled]="testing[next]" (click)="test()" (click)="hasPrevNext(next,'n')"  (click)="setClickedRow(questionnumber-1)" [class.select]="questionnumber-1 == selectedItem">Next</button>
+  <div class="button2"><button type="text" (click)="confirm()" pButton icon="pi pi-check" label="Complete Exam"></button></div>
+  <p-progressBar *ngIf="question" value="{{objectKeys(answers).length* quecount}}"></p-progressBar>
+  <!-- <mat-progress-bar color="red" class=" " *ngIf="question" mode="determinate" value="{{objectKeys(answers).length* quecount}}"></mat-progress-bar> -->
+  </div>
+
+</div>
+
+<div *ngIf="attemptedFlag && !halfcomplete && flag && !flag1"><a mat-button (click)="searchQuestions()" (click)="startTimer()" class="button">Confirm You Want To Start Exam</a></div>
+
+<div *ngIf="!attemptedFlag && !halfcomplete && flag && !flag1"><a mat-button (click)="setFlag()"  class="button">{{subject}}</a></div>
+
+<div *ngIf=!subject><p>No scheduled exam</p></div>
+
+<div *ngIf="!flag"><a mat-button (click)="searchTests()">Search Exams</a></div>
+
+<!-- <div *ngIf="msg">{{msg}}</div> -->
+
+<!-- <div [hidden]="subject"><app-atom-spinner
+  [animationDuration]="1000"
+  [size]="60"
+  [color]="'#ff1d5e'"
+ ></app-atom-spinner>
+</div> -->
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<div class="popup"><p-messages [value]="msgs"></p-messages></div>
+
+<p-dataView *ngIf="!halfcomplete && !attemptedFlag && flag && !flag1" #dv [value]="tempExam">
+  <p-header>
+      <div class="ui-helper-clearfix">
+          <div class="p-grid">
+              <!-- <div class="p-col-12 p-md-4">
+                  <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
+              </div> -->
+              
+              <div class="p-col-6 p-md-4" style="text-align:right">
+                  <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+              </div>
+          </div>
+      </div>
+  </p-header>
+  <ng-template let-car pTemplate="listItem">
+      <div class="p-col-12">
+          <div class="car-details">
+              <div>
+                  <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png"> -->
+                  <div class="p-grid">
+                      <div class="p-col-12">Subject: <b>{{car.subject}}</b></div>
+                      <div class="p-col-12">Date: <b>{{car.date | date}}</b></div>
+                      <div class="p-col-12">Time: <b>{{car.time}}</b></div>
+                      <div class="p-col-12">Marks: <b>{{car.marks}}</b></div>
+                  </div>
+              </div>
+              <button pButton type="button" label="Set Flags" (click)="selectCar($event, car)"></button>
+          </div>
+      </div>
+  </ng-template>
+  <ng-template let-car pTemplate="gridItem">
+      <div style="padding:.5em" class="p-col-12 p-sm-3">
+          <p-panel [header]="car._id" [style]="{'text-align':'center'}">
+              <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60"> -->
+              <!-- <div class="car-detail">{{car.subject}} - {{car.time}}</div> -->
+              <div class="car-detail">Subject: <b>{{car.subject}}</b></div>
+                      <div class="car-detail">Date: <b>{{car.date | date}}</b></div>
+                      <div class="car-detail">Time: <b>{{car.time}}</b></div>
+                      <div class="car-detail">Marks: <b>{{car.marks}}</b></div>
+              <button pButton type="button" label="Start Exam" (click)="selectCar($event, car)" style="margin-top:0"></button>
+          </p-panel>
+      </div>
+  </ng-template>
+</p-dataView>
+
+<p-dialog *ngIf="!halfcomplete && !attemptedFlag && flag && !flag1" header="Exam Details" [(visible)]="displayDialog" [minY]="70" showEffect="fade" [modal]="true" 
+    [style]="{width: '225px'}" (onAfterHide)="onDialogHide()" [contentStyle]="{padding: '2em', textAlign: 'center'}">
+    <div *ngIf="selectedCar">
+        <!-- <img src="assets/showcase/images/demo/car/{{selectedCar.brand}}.png"> -->
+        <strong>{{selectedCar.subject}} - {{selectedCar.marks}}</strong>
+        <button pButton type="button" label="Click Here" (click)="setFlag()" style="margin-left:10px"></button>
+    </div>
+    <div *ngIf="msg">{{msg}}</div>
+
+</p-dialog>
+<div *ngIf="msg && halfcomplete && !attemptedFlag">{{msg}} <button pButton type="button" label="Click Here" (click)="continue()" (click)="startTimer()" style="margin-left:10px"></button></div>
+
+<p-sidebar *ngIf="!flag1" [(visible)]="visibleSidebar5" [fullScreen]="true" [baseZIndex]="10000">
+  <h1 style="font-weight:normal; text-align:center;">Confirmation</h1>
+  <button style=" left:43%;" pButton type="button" (click)="searchQuestions()" (click)="startTimer()" label="Confirm" class="ui-button-success"></button>
+  <button style="left: 44%;" pButton type="button" (click)="visibleSidebar5 = false" label="Cancel" class="ui-button-secondary"></button>
+</p-sidebar>
+
+<!-- <button pButton type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></button> -->
+<!-- <button pButton type="button" (click)="visibleSidebar2 = true" icon="pi pi-arrow-left"></button> -->
+<!-- <button pButton type="button" (click)="visibleSidebar3 = true" icon="pi pi-arrow-down"></button> -->
+<!-- <button pButton type="button" (click)="visibleSidebar4 = true" icon="pi pi-arrow-up"></button> -->
+<button *ngIf="!halfcomplete && attemptedFlag && flag && !flag1" pButton type="button" (click)="visibleSidebar5 = true" label="Confirmation Button"></button>

@@ -1,0 +1,49 @@
+
+$lt-gray: #ddd;
+$background-dark: #512DA8;
+$background-light: #9575CD;
+$background-pale: #D1C4E9;
+$background-moredark: #4527A0;
+$background-toolbar: black;
+
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+    margin: 0px auto;
+    padding: $pad-up-down $pad-left-right;
+}
+
+.jumbotron {
+    @include zero-margin(70px,30px);
+    background: $background-light ;
+    color:floralwhite;
+    min-height: 150px;
+}
+
+.active {
+    background: #9bd5ff;
+    zoom: 110%;
+}
+
+.flex-spacer {
+    margin-left: 60%;
+}
+
+.Toolbar {
+    background-color:transparent;
+    margin-top: 5px;
+    color: black;
+    padding-top: 5px;
+    height: 90px;
+}
+
+.buttons {
+    display: table-cell;
+    margin-left: 20px;
+    padding: 0 auto;
+    // height: auto;
+    width: auto;
+  }
+  .buttons:hover {
+    zoom: 110%;
+    text-decoration: none;
+  }
+  

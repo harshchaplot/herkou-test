@@ -1,0 +1,23 @@
+<mat-toolbar class="Toolbar">
+    <app-atom-spinner
+     [animationDuration]="1000"
+     [size]="60"
+     [color]="'#ff1d5e'"
+    ></app-atom-spinner>
+
+    <!-- <span><img src="#" height=30 width=41></span> -->
+    <button routerLink="/home" routerLinkActive='active' mat-button class="buttons mat-elevation-z4">Home</button>
+    <button routerLink="/exam" routerLinkActive='active' mat-button class="buttons mat-elevation-z4"> Exam </button>
+    <button routerLink="/result" routerLinkActive='active' mat-button class="buttons mat-elevation-z4"> Result </button>
+
+    <!-- <a routerLink="/#" routerLinkActive='active' mat-button><span class="fa fa-info fa-lg"></span> About</a> -->
+    <!-- <a mat-button (click)="searchTests()"><span class="fa fa-list fa-lg"></span> Tests</a> -->
+    <!-- <a routerLink="/#" routerLinkActive='active' mat-button><span class="fa fa-address-card fa-lg"></span> Contact</a> -->
+    <!-- <a mat-button (onclick)="search()"><span class="fa fa-search fa-lg"></span></a> -->
+    
+    <span class="flex-spacer"></span>
+    <a mat-button *ngIf="!username" (click)="gologin()"><span class="fa fa-sign-in fa-lg"></span> Login</a>
+    <a mat-button *ngIf="username" (click)="logOut()"><span class="fa fa-sign-in fa-lg"></span> Logout</a>
+    <a mat-button *ngIf="username">Welcome {{username}}</a>
+    
+</mat-toolbar>

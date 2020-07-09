@@ -1,0 +1,39 @@
+
+<div >
+    <table *ngFor="let i of attempts" class="table table-hover table-striped">
+        <thead>
+            
+            <tr>
+                <th><b>{{i['user']['username']}}</b></th>
+                <th>
+                    {{i['subject']['date'] | date}}
+                </th>
+                <th>
+                    <p class="card-text">Marks
+                        <b>{{i['marks']}}/{{i['subject']['marks']}}</b></p>
+                </th>
+            </tr>
+            
+            <tr>
+                <th>Question Number</th>
+                <th>Answer Attempted</th>
+                <th>Check</th>
+                <th>Correct Answer</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of i['attempt'] | keyvalue">
+                <td>{{a.key}}</td>
+                <td>{{a.value[0]}}</td>
+                <td>{{a.value[1]}}</td>
+                <td>{{a.value[2]}}</td>
+            
+            </tr>
+        </tbody>
+    </table>
+</div>  
+<div *ngIf="attempts.length==0 && !errMess">
+    No Attempt for this Exam
+</div>
+<p-messages [(value)]="errMess"></p-messages>

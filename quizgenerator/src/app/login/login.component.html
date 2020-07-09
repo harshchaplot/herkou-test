@@ -1,0 +1,36 @@
+<mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" (ngSubmit)="onSubmitFirst()">
+        <ng-template matStepLabel matStepperIcon="done">Fill out your Email </ng-template>
+        <mat-form-field>
+          <mat-label>Email-Id</mat-label>
+          <input matInput placeholder="Enter Email-Id" formControlName="emailid" type="text" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmitSecond()">
+        <ng-template matStepLabel>Fill out the details</ng-template>
+
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Enter Password" required>
+        </mat-form-field>
+        
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Confirm</button>
+          <button mat-button (click)="stepper.reset()" (click)="reset()">Reset</button>
+        </div>
+      </form>
+      <div *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>Kindly please check your Email-Id and Password</h4>
+      </div>
+
+    </mat-step>
+
+</mat-horizontal-stepper>
