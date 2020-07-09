@@ -96,7 +96,7 @@ app.use(function(err, req, res, next) {
 
 // app.set( 'port', ( process.env.PORT || 3000 ));
 app.get('/*', (req,res) => {
-  res.sendFile(process.cwd()+"/my-app/dist/angular-nodejs-example/index.html")
+  
 });
 // Start node server
 // app.listen( app.get( 'port' ), function() {
