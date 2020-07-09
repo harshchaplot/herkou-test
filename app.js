@@ -96,7 +96,8 @@ app.use(function(err, req, res, next) {
 
 // app.set( 'port', ( process.env.PORT || 3000 ));
 app.get('/', (req,res) => {
-  res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html")
+  // res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html")
+  res.sendFile(process.cwd()+"/quizgenerator/index.html");
   // res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
 });
 // Start node server
