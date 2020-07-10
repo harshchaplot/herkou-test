@@ -25,12 +25,14 @@ const stream = new EventEmitter()
 const url = config.mongoUrl;
 const connect = mongoose.connect(url);
 var result;
+var temp;
 // var port = 3000
 // const port = process.env.PORT;
 
 connect.then((db) => {
     db1 = ('conFusion')
     console.log("Connected correctly to server");
+    temp = process.cwd();
 }, (err) => { console.log(err); });
 
 // const collection = login;
@@ -52,11 +54,14 @@ var app = express();
 // });
 
 // view engine setup
-app.use(express.static(__dirname + 'dist/quizgenerator'));
+console.log(__dirname,process.cwd()+"/quizgenerator/dist/quizgenerator/index.html");
+console.log(`Current directory: ${process.cwd()}`);
+
+app.use(express.static('dist/quizgenerator'));
 app.get('/*', (req,res) => {
-  // res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html")
+  // res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
   
-  res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html");
+  res.sendFile(temp+"/quizgenerator/dist/quizgenerator/index.html");
 });
 app.listen(process.env.PORT || 3000);
 
