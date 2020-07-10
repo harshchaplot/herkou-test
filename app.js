@@ -55,7 +55,7 @@ var app = express();
 app.use(express.static('dist/quizgenerator'));
 app.get('/*', (req,res) => {
   res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
-  console.log(__dirname,process.cwd());
+  console.log(__dirname,process.cwd(),location.pathname);
   
   // res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html");
 });
