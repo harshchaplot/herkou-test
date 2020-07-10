@@ -59,11 +59,11 @@ var app = express();
 console.log(__dirname,process.cwd()+"/quizgenerator/dist/quizgenerator/index.html");
 console.log(`Current directory: ${process.cwd()}`);
 
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/dist/quizgenerator'));
 app.get('/*', (req,res) => {
   // res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
   
-  res.sendFile(temp+"/quizgenerator/dist/index.html");
+  res.sendFile(temp+"/quizgenerator/dist/quizgenerator/index.html");
 });
 app.listen(process.env.PORT || 3000);
 
