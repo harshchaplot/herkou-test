@@ -53,6 +53,7 @@ var app = express();
 
 // view engine setup
 console.log(__dirname,process.cwd()+"/quizgenerator/dist/quizgenerator/index.html");
+console.log(`Current directory: ${process.cwd()}`);
 
 app.use(express.static('dist/quizgenerator'));
 app.get('/*', (req,res) => {
