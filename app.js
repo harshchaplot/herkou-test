@@ -54,7 +54,9 @@ var app = express();
 // view engine setup
 app.use(express.static('dist/quizgenerator'));
 app.get('/*', (req,res) => {
-  res.sendFile('quizgenerator/dist/quizgenerator/index.html');
+  res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
+  console.log(__dirname,process.cwd());
+  
   // res.sendFile(process.cwd()+"/quizgenerator/dist/quizgenerator/index.html");
 });
 app.listen(process.env.PORT || 3000);
