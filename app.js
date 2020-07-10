@@ -63,7 +63,7 @@ app.use(express.static('dist/quizgenerator'));
 app.get('/*', (req,res) => {
   // res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
   
-  res.sendFile(temp+"/quizgenerator/dist/quizgenerator/index.html");
+  res.sendFile(temp+"/quizgenerator/dist/index.html");
 });
 app.listen(process.env.PORT || 3000);
 
