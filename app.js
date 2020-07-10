@@ -33,7 +33,7 @@ connect.then((db) => {
     db1 = ('conFusion')
     console.log("Connected correctly to server");
     temp = process.cwd();
-    console.log(temp);
+    console.log(process.cwd());
     
 }, (err) => { console.log(err); });
 
