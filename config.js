@@ -1,6 +1,7 @@
 module.exports = {
     'secretKey': '12345-67890-09876-54321',
-    'mongoUrl' : 'mongodb+srv://admin:admin@mycluster-eatj8.mongodb.net/myDB?retryWrites=true&w=majority'
+    'mongoUrl' : 'mongodb://127.0.0.1:27017/'
+    // mongodb+srv://admin:admin@mycluster-eatj8.mongodb.net/myDB?retryWrites=true&w=majority
     
 }
 

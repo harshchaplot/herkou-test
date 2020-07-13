@@ -7,5 +7,3 @@ const crypto = require('crypto-js');
 /* GET home page. */
 
 module.exports = router;
-
-

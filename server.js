@@ -1,27 +1,16 @@
+//Install express server
 const express = require('express');
-const app = express(),
-      bodyParser = require("body-parser");
-      port = process.env.port;
+const path = require('path');
 
-const users = [];
+const app = express();
 
-app.use(bodyParser.json());
-app.use(express.static(process.cwd()+"/my-app/dist/angular-nodejs-example/"));
+// Serve only the static files form the dist directory
+app.use(express.static(__dirname + '/dist/quizgenerator'));
 
-app.get('/api/users', (req, res) => {
-  res.json(users);
+app.get('/*', function(req,res) {
+    
+res.sendFile(path.join(__dirname+"/quizgenerator/dist/quizgenerator/index.html"));
 });
 
-app.post('/api/user', (req, res) => {
-  const user = req.body.user;
-  users.push(user);
-  res.json("user addedd");
-});
-
-app.get('/', (req,res) => {
-  res.sendFile("/index.html")
-});
-
-app.listen(port, () => {
-    console.log(`Server listening on the port::${port}`);
-});
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 3000);

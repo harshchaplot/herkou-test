@@ -5,7 +5,7 @@ var User = require('../models/user');
 var passport = require('passport');
 var authenticate = require('../authenticate')
 router.use(bodyParser.json());
-var cors = require('./cors')
+
 var Staff = require('../models/staff');
 var currentLoggedin = require('../models/currentloggedinuser')
 // var currentuserlogin = {}
@@ -18,6 +18,7 @@ const verifier = require('email-verifier');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto-js');
 const { parse } = require('path');
+// var cors  = require('./cors');
 
 var flag = true
 let rand,mailOptions,host,link;
@@ -100,7 +101,7 @@ router.get('/verify',(req,res,next)=>{
 	}
 });
 
-router.post('/signup', cors.corsWithOptions, (req, res, next) => {
+router.post('/signup', (req, res, next) => {
   if(req.body.emailid) {
     const email = req.body.emailid;
         console.log(email)
@@ -236,7 +237,7 @@ else {
 }
 });
 
-router.post('/staffsignup', cors.corsWithOptions, (req, res, next) => {
+router.post('/staffsignup', (req, res, next) => {
   Staff.register(new Staff({username: req.body.username}),  
     req.body.password, (err, user) => {
     if(err) {
@@ -277,9 +278,9 @@ router.post('/staffsignup', cors.corsWithOptions, (req, res, next) => {
   });
 });
 
-router.post('/login', cors.corsWithOptions, (req, res, next) => {
+router.post('/login', (req, res, next) => {
   // console.log('req.body.username')
-  // console.log(req.body.username)
+  console.log(req.headers.host)
   
   passport.authenticate('local', (err, user, info) => {
     if (err)
@@ -313,7 +314,7 @@ router.post('/login', cors.corsWithOptions, (req, res, next) => {
   }) (req, res, next);
 });
 
-router.get('/logout', cors.corsWithOptions, (req, res, next) => {
+router.get('/logout', (req, res, next) => {
     // console.log('r')
     // console.log(authenticate.jwt._id)
     // currentuserlogin[authenticate.jwt._id]=false
@@ -327,7 +328,7 @@ router.get('/logout', cors.corsWithOptions, (req, res, next) => {
     // res.redirect('/');
 });
 
-router.get('/checkJWTtoken', cors.corsWithOptions, (req, res) => {
+router.get('/checkJWTtoken',  (req, res) => {
   passport.authenticate('jwt', {session: false}, (err, user, info) => {
     if (err)
       return next(err);

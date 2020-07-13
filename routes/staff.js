@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 var passport = require('passport');
 var authenticate = require('../authenticate')
 staffrouter.use(bodyParser.json());
-var cors = require('./cors')
+
 var shuffle = require('../config')
 var Staff = require('../models/staff')
 var login = require('../models/currentloggedinuser')

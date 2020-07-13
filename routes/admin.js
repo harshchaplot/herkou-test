@@ -5,7 +5,7 @@ var AdminExamSchedule = require('../models/admin');
 var passport = require('passport');
 var authenticate = require('../authenticate')
 adminrouter.use(bodyParser.json());
-var cors = require('./cors')
+
 var shuffle = require('../config')
 var Staff = require('../models/staff')
 var login = require('../models/currentloggedinuser')
@@ -83,8 +83,7 @@ adminrouter.get('/exam',authenticate.verifyUser,(req,res,next) => {
         .catch((err) => next(err));
   });
 adminrouter.route('/')
-.options(cors.corsWithOptions ,(req, res) => { res.sendStatus(200); })
-.get(cors.cors,(req,res,next) => {
+.get((req,res,next) => {
     // var a = [0, 1, 2, 3, 4,5,6,7,8,9,10]
     // console.log(a)
     // shuffle.shuffle
@@ -117,7 +116,7 @@ adminrouter.route('/')
     // }
 })
 // authenticate.verifyUser, authenticate.verifyAdmin,
-.post(cors.corsWithOptions,(req, res, next) => {
+.post((req, res, next) => {
     console.log(req.body);
     AdminExamSchedule.create(req.body)
     .then((exam) => {
@@ -140,7 +139,7 @@ adminrouter.route('/')
     }, (err) => next(err))
     .catch((err) => console.log(err));
 })
-.delete(cors.corsWithOptions,authenticate.verifyUser,authenticate.verifyAdmin,(req, res, next) => {
+.delete(authenticate.verifyUser,authenticate.verifyAdmin,(req, res, next) => {
     AdminExamSchedule.deleteMany()
     .then((msg) => {
         console.log('All AdminExamSchedule Deleted ', msg);
@@ -204,7 +203,7 @@ adminrouter.route('/getStaff')
 
 })
 // authenticate.verifyAdminauthenticate.verifyUser,
-.put(cors.cors,(req,res,next) => {
+.put((req,res,next) => {
     console.log(req.body);
     console.log(req.body.params.update)
     Staff.findByIdAndUpdate(req.body.params.id, { $set : req.body.params.update}, {new:true})
@@ -231,7 +230,7 @@ adminrouter.route('/getStaff')
 // const changeStream = collection.watch();
 
 adminrouter.route('/totalLoggedinUsers')
-.get(cors.cors,(req,res,next) => {
+.get((req,res,next) => {
     
     // if(req.query.number == 0) {
         login.countDocuments()

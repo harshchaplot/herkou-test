@@ -11,7 +11,7 @@ var AdminExamSchedule = require('../models/admin');
 var notify = require('../models/notifier');
 var nodemailer = require('nodemailer');
 router.use(bodyParser.json());
-var cors = require('./cors');
+
 const { route } = require('.');
 var result = {};
 var mapping = {};
@@ -141,7 +141,7 @@ router.route('/notify')
 });
 
 
-router.get('/',cors.corsWithOptions,  function(req, res, next) {
+router.get('/',  function(req, res, next) {
   let random = [];
   // let a = [];
   // admin.find({},{branch:1,semester:1}, (err,res) => {
@@ -193,7 +193,7 @@ router.get('/',cors.corsWithOptions,  function(req, res, next) {
   }, (err) => next(msg));
   
 
-router.get('/exams',cors.corsWithOptions,function(req,res,next) {
+router.get('/exams',function(req,res,next) {
     
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
@@ -202,7 +202,7 @@ router.get('/exams',cors.corsWithOptions,function(req,res,next) {
   }, (err) => next(msg));
 
   router.route('/result')
-  .get(cors.cors,authenticate.verifyEmail,authenticate.verifyUser, (req,res,next) => {
+  .get(authenticate.verifyEmail,authenticate.verifyUser, (req,res,next) => {
     Answer.find({branch:req.query.branch,semester:req.query.semester,user:req.user._id})
     .populate('user')
     .then((result) => {
@@ -214,7 +214,7 @@ router.get('/exams',cors.corsWithOptions,function(req,res,next) {
   .catch((err) => next(err));
 
   })
-  .post(cors.cors,authenticate.verifyUser,(req,res,next) => {
+  .post(authenticate.verifyUser,(req,res,next) => {
     // console.log(req.query.branch)
     // console.log(req.query.semester)
     console.log(req.body)
