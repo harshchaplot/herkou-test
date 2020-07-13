@@ -81,7 +81,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + "/quizgenerator/dist/quizgenerator"));
 app.get('/*', (req,res) => {
   // res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
-  
+  console.log('/')
   res.sendFile(path.join(__dirname+"/quizgenerator/dist/quizgenerator/index.html"));
 });
 app.listen(process.env.PORT || 3000);
