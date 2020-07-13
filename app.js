@@ -71,11 +71,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true},),);
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/admin', adminRouter);
-app.use('/test', TestRouter);
-app.use('/staff', StaffRouter);
+app.use('/api', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/admin', adminRouter);
+app.use('/api/test', TestRouter);
+app.use('/api/staff', StaffRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.static(__dirname + "/quizgenerator/dist/quizgenerator"));
