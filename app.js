@@ -60,16 +60,6 @@ var app = express();
 // });
 
 // view engine setup
-console.log(__dirname,process.cwd()+"/quizgenerator/dist/quizgenerator/index.html");
-console.log(`Current directory: ${process.cwd()}`);
-
-app.use(express.static(__dirname + "/quizgenerator/dist/quizgenerator"));
-app.get('/*', (req,res) => {
-  // res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
-  
-  res.sendFile(path.join(__dirname+"/quizgenerator/dist/quizgenerator/index.html"));
-});
-app.listen(process.env.PORT || 8080);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -87,6 +77,14 @@ app.use('/admin', adminRouter);
 app.use('/test', TestRouter);
 app.use('/staff', StaffRouter);
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(__dirname + "/quizgenerator/dist/quizgenerator"));
+app.get('/*', (req,res) => {
+  // res.sendFile(path.join(__dirname,'/dist/quizgenerator/index.html'));
+  
+  res.sendFile(path.join(__dirname+"/quizgenerator/dist/quizgenerator/index.html"));
+});
+app.listen(process.env.PORT || 3000);
 
 // app.get('/*', function(req,res) {
   // 
