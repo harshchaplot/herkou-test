@@ -75,17 +75,17 @@ export class LoginComponent implements OnInit {
     console.log(this.onsubmitsignupvalues);
     // console.log(this.username);
     
-    this.authService.checkanotherlogin(this.onsubmitsignupvalues)
-    .subscribe(data => {
-      console.log(data);
+    // this.authService.checkanotherlogin(this.onsubmitsignupvalues)
+    // .subscribe(data => {
+    //   console.log(data);
     
-    if(data.length==0){
+    // if(data.length==0){
 
-            this.authService.checkanotherIP(this.ipAddress)
-            .subscribe(data => {
-            console.log(data);
+    //         this.authService.checkanotherIP(this.ipAddress)
+    //         .subscribe(data => {
+    //         console.log(data);
 
-            if(data.length==0){
+            // if(data.length==0){
       
                       this.authService.logIn(this.onsubmitsignupvalues,this.ipAddress)
                         .subscribe(data =>  {     
@@ -102,17 +102,17 @@ export class LoginComponent implements OnInit {
                           console.log(this.errMess);
                         },
                       );
-                    }
-              else {
-                console.log('Same System cannot be use twice in one exam');
-                }
-              }
-            )
-    }
-  else {
-    console.log('Same User can\'t login at same time');
-  }
-  });
+                    // }
+              // else {
+                // console.log('Same System cannot be use twice in one exam');
+                // }
+  //             }
+  //           )
+  //   }
+  // else {
+  //   console.log('Same User can\'t login at same time');
+  // }
+  // });
   }
   reset() {
     this.onsubmitsignupvalues=null;

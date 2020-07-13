@@ -43,8 +43,8 @@ export class SignupComponent implements OnInit {
 
   branchs: Branch[] = [
     {value: 'CSE', viewValue: 'CSE'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    // {value: 'pizza-1', viewValue: 'Pizza'},
+    // {value: 'tacos-2', viewValue: 'Tacos'}
   ];
   sem: Sem[] = [
     {value: 1, viewValue: 1},
