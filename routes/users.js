@@ -167,9 +167,8 @@ router.post('/signup', (req, res, next) => {
 	      	let index = email.indexOf("@");
 	      	let string = email.substring(0,index);
 	      	let encoded = crypto.AES.encrypt(string,"message").toString();
-            host=req.get('host');
-            console.log(host);
-	          link="https://"+req.get('host')+"/users/verify?id="+encoded;
+	          host=req.get('host');
+	          link="http://"+req.get('host')+"/users/verify?id="+encoded;
 	          mailOptions={
 	              to : email,
 	              subject : "Please confirm your Email account",
