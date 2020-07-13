@@ -52,7 +52,8 @@
     "rxjs-compat": "^6.5.5",
     "tns-core-modules": "^6.5.8",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "typescript": "~3.8.3"
   },
   "devDependencies": {
     "@angular/cli": "1.2.3",
