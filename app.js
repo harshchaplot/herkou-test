@@ -69,7 +69,7 @@ app.get('/*', (req,res) => {
   
   res.sendFile(path.join(__dirname+"/quizgenerator/dist/quizgenerator/index.html"));
 });
-app.listen(process.env.PORT || 3001);
+app.listen(process.env.PORT || 3000);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
