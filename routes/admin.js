@@ -38,7 +38,7 @@ adminrouter.get('/exam',authenticate.verifyUser,(req,res,next) => {
             while(exams[i]) {
                 date = new Date(exams[i]['date'])
                 dt1 = date.getDate();
-                console.log(exams[i]);
+                console.log(exams[i],dt1);
                 // if(exams[i])
                 var temp = exams[i]['completionTime'].split(':')
                 // console.log(temp,d.getHours(),d.getMinutes());
