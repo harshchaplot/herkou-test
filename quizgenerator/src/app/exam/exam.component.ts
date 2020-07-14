@@ -158,10 +158,15 @@ export class ExamComponent implements OnInit {
 				.subscribe(name => { this.semester = name; });	
 		this.subscription3 = this.authService.getId()
 				.subscribe(id => {this.id = id});
-			
-		this.searchTests()
-
+		
+				var interval = setInterval(() => {
+					console.log("called");
+					
+					this.searchTests()
+					clearInterval(this.interval)
+					},3000)
 	}
+	
 	confirm() {
         this.confirmationService.confirm({
             message: 'Are you sure that you want to proceed?',
