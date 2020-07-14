@@ -166,12 +166,13 @@ export class HomeComponent implements OnInit {
       var temp = resp['exams']
       for( var i=0;i<resp['exams'].length;i++) {
         console.log(temp[i]);
-        var temp = temp[i].date
+        // var temp = temp[i].date
 
-      var date1 = temp.getDate();
-    
+      // var date1 = temp.getDate();      
       
-      
+      var date1 = this.datePipe.transform(temp[i].date,"dd")
+        console.log(date1);
+
       console.log(date1);
 			var date2 = this.datePipe.transform(Date.now(),"dd")
         console.log(date2);
