@@ -77,11 +77,11 @@
 
 </div>
 
-<div *ngIf="attemptedFlag && !halfcomplete && flag && !flag1"><a mat-button (click)="searchQuestions()" (click)="startTimer()" class="button">Confirm You Want To Start Exam</a></div>
+<!-- <div *ngIf="attemptedFlag && !halfcomplete && flag && !flag1"><a mat-button (click)="searchQuestions()" (click)="startTimer()" class="button">Confirm You Want To Start Exam</a></div> -->
 
-<div *ngIf="!attemptedFlag && !halfcomplete && flag && !flag1"><a mat-button (click)="setFlag()"  class="button">{{subject}}</a></div>
+<!-- <div *ngIf="!attemptedFlag && !halfcomplete && flag && !flag1"><a mat-button (click)="setFlag()"  class="button">{{subject}}</a></div> -->
 
-<div *ngIf=!subject><p>{{msg}}</p></div>
+<div *ngIf="!subject && msg"><p>{{msg}}</p></div>
 
 <!-- <div *ngIf="!flag"><a mat-button (click)="searchTests()">Search Exams</a></div> -->
 
