@@ -158,6 +158,8 @@ export class ExamComponent implements OnInit {
 				.subscribe(name => { this.semester = name; });	
 		this.subscription3 = this.authService.getId()
 				.subscribe(id => {this.id = id});
+			
+		this.searchTests()
 
 	}
 	confirm() {
@@ -300,20 +302,21 @@ export class ExamComponent implements OnInit {
 
 	getQuestion(key) {
 			this.last=0;
-			console.log(this.mapping);
+			// console.log(this.mapping);
 			
 			// this.examservice.getQuestionbyid(this.branch,this.semester,this.mapping[key])
 			this.examservice.getQuestionbyid(this.subject,this.mapping[key])
-				.subscribe((question) => {this.question = question; console.log(this.question);
+				.subscribe((question) => {this.question = question; 
+					// console.log(this.question);
 				
 				 this.seasons = [question.option1, question.option2, question.option3, question.option4];
 				//  this.answerArray=[question.option1.ans, question.option2.ans, question.option3.ans, question.option4.ans];
 				//  console.log(this.answerArray);
-				console.log(this.seasons);
+				// console.log(this.seasons);
 				
 				this.shuffle(this.seasons)
 				 this.answerArray[this.questionnumber] = this.question.ans
-				 console.log(this.answerArray);
+				//  console.log(this.answerArray);
 				 
 				 if(this.answers!=[]) {
 					this.last=this.answers[this.questionnumber]
@@ -358,7 +361,7 @@ export class ExamComponent implements OnInit {
 			console.log('Your answers');
 			console.log(this.answers);
 			clearInterval(this.interval)
-			this.confirm()
+			this.submit()
 			
 	      }
 	    },1000)
@@ -366,18 +369,6 @@ export class ExamComponent implements OnInit {
 
 	submit() {
 
-		// for (var t=1;t<this.answers.length;t++) {
-		// 	// var temp = this.items[t][1]
-		// 	this.final[this.items[t-1][1]] = this.answers[t]
-		// 	// console.log(this.items[i]);
-		// 	// console.log(this.answers[i]);
-		// 	// console.log(i);
-		// }
-		// console.log(this.answers[1]);
-		// console.log(this.items[0][1]);
-		console.log(this.answerArray);
-		console.log(this.answers)
-		
 		for(var i=1;i<this.answers.length;i++) {
 			this.answer=[]
 			if(this.answers[i]==this.answerArray[i]) {
@@ -404,7 +395,7 @@ export class ExamComponent implements OnInit {
 			// this.final['subject'] = (this.subject)
 		this.examservice.sendAttempted(this.final,this.examId,this.marks)
 		.subscribe((resp) => {
-			console.log(resp);
+			// console.log(resp);
 
 		})
 		clearInterval(this.interval)
@@ -412,20 +403,26 @@ export class ExamComponent implements OnInit {
 		this.examservice.sendResult(this.branch,this.semester,this.marks,this.subject,this.examId)
 			.subscribe((name) => {console.log('Result Entered successfully',name)},
 			error => {
-				console.log(error);
+				// console.log(error);
 				this.errMess = error;
-				console.log(this.errMess);
+				// console.log(this.errMess);
 			  }
 			  );
+		
+			  this.examservice.setfinalFlag({subject:this.subject,subjectId:this.examId,completionFlag:true})
+			  .subscribe((resp) => {
+				//   console.log(resp);
+			  })
+		
 		this.router.navigate(['/home']);
 		}
 
 	savetemp(season) {
 			this.answers[this.questionnumber] = season
-			console.log(this.answers);
-			console.log(this.answerArray);
+			// console.log(this.answers);
+			// console.log(this.answerArray);
 			this.last=null
-			console.log(this._localStorageService.keys());
+			// console.log(this._localStorageService.keys());
 			// var temp = []
 			// temp.push(season)
 			// temp.push(this.answerArray[this.questionnumber])
@@ -433,7 +430,7 @@ export class ExamComponent implements OnInit {
 			this._localStorageService.set(this.mapping[this.questionnumber].toString(),[season,this.answerArray[this.questionnumber]])
 			// this._localStorageService.set('test'+this.mapping[this.questionnumber],this.answerArray[this.questionnumber])
 			// this._localStorageService.set(this.)
-			console.log(this.mapping[this.questionnumber],this._localStorageService.get(this.mapping[this.questionnumber].toString()));
+			// console.log(this.mapping[this.questionnumber],this._localStorageService.get(this.mapping[this.questionnumber].toString()));
 			// console.log(this._localStorageService.get('test'+this.mapping[this.questionnumber].toString()));
 			
 
