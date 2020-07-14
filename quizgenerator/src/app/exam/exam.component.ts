@@ -241,7 +241,7 @@ export class ExamComponent implements OnInit {
 		console.log(this.answerArray)
 		console.log(this.answers);
 		while(this.arr.length < this.exammarks){
-			var r = Math.floor(Math.random() * 14) ;
+			var r = Math.floor(Math.random() * 17) ;
 			if(this.arr.indexOf(r) === -1) this.arr.push(r);
 			this.quecount = this.arr.length;
 		}
