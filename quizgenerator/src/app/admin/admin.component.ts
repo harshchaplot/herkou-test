@@ -80,7 +80,8 @@ export class AdminComponent implements OnInit {
       branch:[''],
       semester:[''],
       duration:[''],
-      completionTime:['']
+      completionTime:[''],
+      marks:['']
     });
 
     this.examForm.valueChanges

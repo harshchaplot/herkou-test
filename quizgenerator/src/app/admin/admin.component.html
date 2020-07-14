@@ -49,10 +49,17 @@
 
       <p>
         <mat-form-field>
-            <mat-label>Choose a date</mat-label>
+            <mat-label>Enter Duration of Exam</mat-label>
             <input matInput formControlName="duration" placeholder="Enter Duration in number" type="number" required>
         </mat-form-field>
     </p>
+
+    <p>
+      <mat-form-field>
+          <mat-label>Enter Marks of Exam</mat-label>
+          <input matInput formControlName="marks" placeholder="Enter Marks in number" type="number" required>
+      </mat-form-field>
+  </p>
 
     <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="examForm.invalid">Submit</button>
 </form>
