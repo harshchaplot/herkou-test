@@ -163,10 +163,10 @@ export class ExamComponent implements OnInit {
 					console.log("called");
 					
 					this.searchTests()
-					clearInterval(this.interval)
+					clearInterval(interval)
 					},3000)
 	}
-	
+
 	confirm() {
         this.confirmationService.confirm({
             message: 'Are you sure that you want to proceed?',
