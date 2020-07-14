@@ -451,6 +451,9 @@ export class ExamComponent implements OnInit {
 		this.adminservice.searchExam(this.branch,this.semester)
 		  .subscribe((tests) => { 
 			  console.log(tests)
+			  if(tests.msg) {
+				  this.msg = tests.msg
+			  }
 			this.exams = tests.exams[0];
 			console.log(this.exams);
 			this.tempExam.push(this.exams)
