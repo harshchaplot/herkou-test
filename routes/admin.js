@@ -28,7 +28,7 @@ adminrouter.get('/exam',authenticate.verifyUser,(req,res,next) => {
     var d = new Date();
 
     console.log('outside')
-    console.log(d.getHours()+'.'+d.getMinutes())
+    console.log(d.getHours()+'.'+d.getMinutes(),d.getDate())
     // if(authenticate.verifyAdmin){
         AdminExamSchedule.find({branch:req.query.branch,semester:req.query.sem})
         .then((exams) => {
