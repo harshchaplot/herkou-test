@@ -47,8 +47,8 @@ export class SignupComponent implements OnInit {
     // {value: 'tacos-2', viewValue: 'Tacos'}
   ];
   sem: Sem[] = [
-    {value: 1, viewValue: 1},
-    {value: 2, viewValue: 2},
+    // {value: 1, viewValue: 1},
+    // {value: 2, viewValue: 2},
     {value: 3, viewValue: 3}
   ];
 

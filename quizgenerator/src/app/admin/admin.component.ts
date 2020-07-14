@@ -24,13 +24,16 @@ export class AdminComponent implements OnInit {
 
   branchs: Branch[] = [
     {value: 'CSE', viewValue: 'CSE'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    // {value: 'pizza-1', viewValue: 'Pizza'},
+    // {value: 'tacos-2', viewValue: 'Tacos'}
   ];
   sem: Sem[] = [
     {value: 1, viewValue: 1},
     {value: 2, viewValue: 2},
-    {value: 3, viewValue: 3}
+    {value: 3, viewValue: 3},
+    {value: 4, viewValue: 4},
+    {value: 5, viewValue: 5},
+    {value: 6, viewValue: 6},
   ];
   examForm : FormGroup;
   examData : Exam;
@@ -75,7 +78,9 @@ export class AdminComponent implements OnInit {
       time: [, [Validators.required]],
       date: Date(), 
       branch:[''],
-      semester:['']
+      semester:[''],
+      duration:[''],
+      completionTime:['']
     });
 
     this.examForm.valueChanges

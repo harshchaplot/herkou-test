@@ -40,5 +40,19 @@
         </mat-form-field>
     </p>
 
+        <p>
+          <mat-form-field>
+              <mat-label>Enter Completion Time</mat-label>
+              <input matInput formControlName="completionTime" placeholder="Enter Time With AM OR PM" type="time" required>
+          </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput formControlName="duration" placeholder="Enter Duration in number" type="number" required>
+        </mat-form-field>
+    </p>
+
     <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="examForm.invalid">Submit</button>
 </form>
