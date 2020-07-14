@@ -194,13 +194,11 @@ router.get('/',  function(req, res, next) {
   
 
 router.get('/exams',function(req,res,next) {
-  count = 0  
-  for(var i=0;i++;) {
-      if(result[req.query.subject][i]) {
-        count++
-      }
+  i = 0
+    while(result[req.query.subject][i]) {
+        i++
     }
-    console.log(count);
+    console.log(i,'herer');
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     res.send(result[req.query.subject][req.query.id]);
