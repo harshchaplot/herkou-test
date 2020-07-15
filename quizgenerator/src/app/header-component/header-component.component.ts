@@ -77,7 +77,7 @@ export class HeaderComponentComponent implements OnInit {
       // console.log('hoil');
       console.log(this.username);
     this.authService.logOut();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
 
    }
   getuser() {
