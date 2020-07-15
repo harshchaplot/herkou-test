@@ -62,6 +62,10 @@ export class HeaderComponentComponent implements OnInit {
   gologin() {
     this.router.navigate(['/login']);
   }
+  
+   goSignup() {
+    this.router.navigate(['/login']);
+  }
 
   logOut() {
     console.log(this.username);
