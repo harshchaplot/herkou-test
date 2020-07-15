@@ -17,6 +17,7 @@
     
     <span class="flex-spacer"></span>
     <a mat-button *ngIf="!username" (click)="gologin()"><span class="fa fa-sign-in fa-lg"></span> Login</a>
+  <a mat-button *ngIf="!username" (click)="goSignup()"><span class="fa fa-sign-in fa-lg"></span> Signup</a>
     <a mat-button *ngIf="username" (click)="logOut()"><span class="fa fa-sign-in fa-lg"></span> Logout</a>
     <a mat-button *ngIf="username">Welcome {{username}}</a>
     
