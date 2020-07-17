@@ -1,19 +1,29 @@
 
 <div *ngIf = "flag1">
-  <div class="totalquestion mat-elevation-z4 ">
+
+  <div class="container"
+    fxLayout="row"
+    fxLayoutAlign.gt-md="space-around center"
+    fxLayoutGap="10px" 
+    fxLayoutGap.xs="0">
+  <div fxFlex="25%" flex-order="-1">
+  <div  class="totalquestion mat-elevation-z4 ">
     <div *ngIf="quecount"><b>{{quecount}}</b></div>
     <div *ngIf="!quecount"><b>NaN</b></div>
   </div>
 
   <div class="totalquestion1  ">Total Number of Questions</div>
-
+  </div>
+  <div fxFlex="25%" flex-order.gt-md="1">
   <div class="questionnumber mat-elevation-z4 ">
     <p *ngIf="questionnumber"><b>{{questionnumber}}</b></p>
     <p *ngIf="!questionnumber"><b>NaN</b></p>
   </div>
 
   <div class="questionnumber1  ">Current Question Number</div>
+  </div>
 
+  <div fxFlex="25%" flex-order="2">
   <div class="attempted mat-elevation-z4 ">
     <p><b>{{minute}}:{{timeLeft}}</b></p>  
   </div>
@@ -21,8 +31,9 @@
   <div class="attempted1">
     Clock Timer
   </div>
+  </div>
 
-  <div class="selectedAnswer">
+  <div fxFlex="25%" flex-order.gt-md="3" class="selectedAnswer">
     <ng-container *ngIf="!selectedanswer && !last">Not Attempted</ng-container>
     <ng-container *ngIf="selectedanswer">
       Selected Answer is
@@ -33,6 +44,7 @@
     </ng-container>
   </div>
 
+  </div>
 
   <div *ngIf="questionnumber>=1" class="panel" matRipple [matRippleColor]="mycolor" [matRippleRadius]="radius">
     <div> 
