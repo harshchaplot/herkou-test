@@ -7,32 +7,32 @@
     fxLayoutGap="10px" 
     fxLayoutAlign="center"
     fxLayoutGap.xs="0">
-  <div fxFlex="25%">
-  <div  class="totalquestion mat-elevation-z4 ">
+  <!-- <div fxFlex="25%"> -->
+  <div fxFlex="12.5%" class="totalquestion mat-elevation-z4 ">
     <div *ngIf="quecount"><b>{{quecount}}</b></div>
     <div *ngIf="!quecount"><b>NaN</b></div>
   </div>
 
-  <div class="totalquestion1  ">Total Number of Questions</div>
-  </div>
-  <div fxFlex="25%">
-  <div class="questionnumber mat-elevation-z4 ">
+  <div fxFlex="12.5%" class="totalquestion1">Total Number of Questions</div>
+  <!-- </div> -->
+  <!-- <div fxFlex="25%"> -->
+  <div fxFlex="12.5%" class="questionnumber mat-elevation-z4 ">
     <p *ngIf="questionnumber"><b>{{questionnumber}}</b></p>
     <p *ngIf="!questionnumber"><b>NaN</b></p>
   </div>
 
-  <div class="questionnumber1  ">Current Question Number</div>
-  </div>
+  <div fxFlex="12.5%" class="questionnumber1  ">Current Question Number</div>
+  <!-- </div> -->
 
-  <div fxFlex="25%">
-  <div class="attempted mat-elevation-z4 ">
+  <!-- <div fxFlex="25%"> -->
+  <div fxFlex="12.5%" class="attempted mat-elevation-z4 ">
     <p><b>{{minute}}:{{timeLeft}}</b></p>  
   </div>
 
-  <div class="attempted1">
+  <div fxFlex="12.5%" class="attempted1">
     Clock Timer
   </div>
-  </div>
+  <!-- </div> -->
 
   <div fxFlex="25%" class="selectedAnswer">
     <ng-container *ngIf="!selectedanswer && !last">Not Attempted</ng-container>
