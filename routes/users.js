@@ -105,10 +105,10 @@ router.post('/signup', (req, res, next) => {
   if(req.body.emailid) {
     const email = req.body.emailid;
         console.log(email)
-        let verify = new verifier("at_EEHvApdOPC6RkT91LMEXOlzXKaSAR");
-	      verify.verify(email,(err,data)=>{
+        // let verify = new verifier("at_EEHvApdOPC6RkT91LMEXOlzXKaSAR");
+	      // verify.verify(email,(err,data)=>{
           // console.log('start;',err,data)
-        if(true) {
+        // if(true) {
         
         
   User.register(new User({username: req.body.username}),  
@@ -131,9 +131,9 @@ router.post('/signup', (req, res, next) => {
         user.email = req.body.emailid;
         const email = req.body.emailid;
         console.log(email)
-        let verify = new verifier("at_EEHvApdOPC6RkT91LMEXOlzXKaSAR");
-	      verify.verify(email,(err,data)=>{
-          console.log('start;',err,data)
+        // let verify = new verifier("at_EEHvApdOPC6RkT91LMEXOlzXKaSAR");
+	      // verify.verify(email,(err,data)=>{
+          // console.log('start;',err,data)
 		      // if(err){
 		      // 	console.log('eerr',err);
           //   // res.send('Problem');
@@ -222,19 +222,17 @@ router.post('/signup', (req, res, next) => {
               res.send("<h1>Wrong credentials</h1>");
 	          	return res.end();
             }
-          
-	      });
       }
     }
   });
 }
-else {
-  res.statusCode = 401;
-  res.setHeader('Content-Type', 'application/json');
-  res.json({err: 'Enter Valid Email Address'});
-}
-})
-}
+// else {
+//   res.statusCode = 401;
+//   res.setHeader('Content-Type', 'application/json');
+//   res.json({err: 'Enter Valid Email Address'});
+// }
+// })
+
 });
 
 router.post('/staffsignup', (req, res, next) => {
