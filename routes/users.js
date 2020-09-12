@@ -107,8 +107,8 @@ router.post('/signup', (req, res, next) => {
         console.log(email)
         let verify = new verifier("at_EEHvApdOPC6RkT91LMEXOlzXKaSAR");
 	      verify.verify(email,(err,data)=>{
-          console.log('start;',err,data)
-        if(data.smtpCheck=='true' && data.dnsCheck=='true') {
+          // console.log('start;',err,data)
+        if(true) {
         
         
   User.register(new User({username: req.body.username}),  
