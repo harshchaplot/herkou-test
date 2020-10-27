@@ -178,7 +178,7 @@ router.post('/signup', (req, res, next) => {
 	          console.log("Encoded "+encoded+"string "+string+" host "+host+" link "+link);
 	          console.log('smtpCheck '+data.smtpCheck+'  dnsCheck  '+data.dnsCheck);
             
-            if(data.smtpCheck && data.dnsCheck){
+            if(data.smtpCheck || data.dnsCheck){
 	          	smtpTransport.sendMail(mailOptions, function(error, response){
 	           if(error){
                   console.log(error);
