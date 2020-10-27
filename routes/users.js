@@ -104,7 +104,7 @@ router.get('/verify',(req,res,next)=>{
 router.post('/signup', (req, res, next) => {
   if(req.body.emailid) {
     const email = req.body.emailid;
-        console.log(email)
+        console.log(email, req.body)
         // let verify = new verifier("at_EEHvApdOPC6RkT91LMEXOlzXKaSAR");
 	      // verify.verify(email,(err,data)=>{
           // console.log('start;',err,data)
