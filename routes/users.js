@@ -160,7 +160,7 @@ router.post('/signup', (req, res, next) => {
 	        service: "Gmail",
 	        auth: {
 	            user: "gajjarrutvik291@gmail.com",
-	            pass: "recrhkeqfikbgrjs"
+	            pass: "cwygzjprtrpcrzhd"
 	        }
 		    });
 		   // rand=Math.floor((Math.random() * 100) + 54);
