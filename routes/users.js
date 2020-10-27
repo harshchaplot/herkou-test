@@ -110,7 +110,7 @@ router.post('/signup', (req, res, next) => {
           // console.log('start;',err,data)
         // if(true) {
         
-        
+        console.log("Hello this HARSH ",req.body);
   User.register(new User({username: req.body.username}),  
     req.body.password, (err, user) => {
     if(err) {
