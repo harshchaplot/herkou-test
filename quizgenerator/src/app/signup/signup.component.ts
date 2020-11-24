@@ -83,7 +83,7 @@ export class SignupComponent implements OnInit {
     this.thirdFormGroup = this.fb.group({
       password:['', [Validators.required,Validators.pattern]],
       renterpassword:['', [Validators.required]],
-      // staff: Boolean
+      staff: Boolean
     });
   }
 
@@ -104,28 +104,28 @@ export class SignupComponent implements OnInit {
     Object.assign(this.onsubmitsignupvalues,this.temp);
     delete this.onsubmitsignupvalues.renterpassword;
     
-    // if(this.onsubmitsignupvalues.staff) {
-    //   this.onsubmitsignupvalues.username = this.onsubmitsignupvalues.emailid;
-    // this.onsubmitsignupvalues.admin = false;
-    // this.onsubmitsignupvalues.student = false;
-    // this.onsubmitsignupvalues.staff = false;
-    // console.log(this.onsubmitsignupvalues);
-    // this.signupservice.signupStaff(this.onsubmitsignupvalues)
-    // .subscribe(staff => {
-    //   console.log('abcd');
-    //   console.log(staff);
-    //   this.returnmessage = staff;
-    //   if(this.returnmessage.err=="A staff with the given username is already registered") {    
-    //     this.router.navigate(['/']);
-    //     }
-    //   else {
-    //       this.router.navigate(['/login']);
-    //     }
-    // },
-    // errmess => { this.returnmessage = null; this.errMess = <any>errmess; });
-    // }
+    if(this.onsubmitsignupvalues.staff) {
+      this.onsubmitsignupvalues.username = this.onsubmitsignupvalues.emailid;
+    this.onsubmitsignupvalues.admin = false;
+    this.onsubmitsignupvalues.student = false;
+    this.onsubmitsignupvalues.staff = false;
+    console.log(this.onsubmitsignupvalues);
+    this.signupservice.signupStaff(this.onsubmitsignupvalues)
+    .subscribe(staff => {
+      console.log('abcd');
+      console.log(staff);
+      this.returnmessage = staff;
+      if(this.returnmessage.err=="A staff with the given username is already registered") {    
+        this.router.navigate(['/']);
+        }
+      else {
+          this.router.navigate(['/login']);
+        }
+    },
+    errmess => { this.returnmessage = null; this.errMess = <any>errmess; });
+    }
 
-    // else {
+    else {
     this.onsubmitsignupvalues.username = this.onsubmitsignupvalues.emailid.slice(0,8);
     this.onsubmitsignupvalues.admin = false;
     this.onsubmitsignupvalues.student = true;
@@ -158,7 +158,7 @@ export class SignupComponent implements OnInit {
       
       this.msgs.push({severity:'error', summary:'Error:', detail:'Enter Valid Email Address'});
      }, );
-  // }
+  }
   }
   
   reset() {
