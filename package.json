@@ -13,7 +13,7 @@
     "crypto-js": "^4.0.0",
     "debug": "~2.6.9",
     "email-verifier": "^0.4.1",
-    "express": "~4.16.1",
+    "express": "~4.17.3",
     "express-session": "^1.17.1",
     "google-drive": "0.0.8",
     "googleapis": "^39.2.0",
